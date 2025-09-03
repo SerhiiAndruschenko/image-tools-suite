@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
       .toBuffer();
 
     // Return the AVIF file
-    return new NextResponse(avifBuffer, {
+    return new NextResponse(new Blob([avifBuffer], { type: 'image/avif' }), {
       headers: {
         'Content-Type': 'image/avif',
         'Content-Disposition': `attachment; filename="${imageFile.name.replace(/\.[^/.]+$/, '')}.avif"`,
