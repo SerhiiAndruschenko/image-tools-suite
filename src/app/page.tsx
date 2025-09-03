@@ -2,22 +2,23 @@ import type { Metadata } from 'next';
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Image Tools Suite - Unlimited Image Processing Tools | Free & No Limits",
+  title: "PixUnlim - Unlimited Image Processing Tools | Free & No Limits",
   description: "Professional image processing suite with unlimited image count support. Convert, compress, resize, and crop unlimited images for free. No limits on file quantity - process hundreds or thousands of images at once.",
-  keywords: "image tools, unlimited images, free image processing, WebP converter, AVIF converter, image resizer, image cropper, image compressor, PNG converter, batch processing, unlimited file count, no limits",
+  keywords: "pixunlim, image tools, unlimited images, free image processing, WebP converter, AVIF converter, image resizer, image cropper, image compressor, PNG converter, batch processing, unlimited file count, no limits",
   openGraph: {
-    title: "Image Tools Suite - Unlimited Image Processing Tools",
+    title: "PixUnlim - Unlimited Image Processing Tools",
     description: "Professional image processing suite with unlimited image count support. Convert, compress, resize, and crop unlimited images for free.",
-    url: '/',
+    url: 'https://pixunlim.com',
     type: 'website',
+    siteName: 'PixUnlim',
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Image Tools Suite - Unlimited Image Processing Tools",
+    title: "PixUnlim - Unlimited Image Processing Tools",
     description: "Professional image processing suite with unlimited image count support. No limits on file quantity.",
   },
   alternates: {
-    canonical: '/',
+    canonical: 'https://pixunlim.com',
   },
 };
 
@@ -165,8 +166,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900">
-      <div className="max-w-6xl mx-auto p-6 space-y-12">
-        {/* Header */}
+      <div className="max-w-6xl mx-auto p-6 pb-12 space-y-12">
+        {/* PixUnlim Header */}
         <div className="text-center space-y-6">
           <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 rounded-3xl shadow-2xl mb-8 glow">
             <svg
@@ -184,16 +185,16 @@ export default function Home() {
             </svg>
           </div>
           <h1 className="text-5xl font-bold bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
-            Image Tools Suite
+            PixUnlim
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Professional image processing tools that work locally in your
             browser - no server limits, no file size restrictions, complete
-            privacy.
+            privacy. Process unlimited images with PixUnlim.
           </p>
         </div>
 
-        {/* Services Grid */}
+        {/* PixUnlim Tools Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <Link key={index} href={service.href} className="group">
@@ -246,10 +247,10 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Features Section */}
-        <div className="bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-gray-700/20">
+        {/* PixUnlim Features Section */}
+        <div className="bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8  shadow-2xl border border-gray-700/20">
           <h2 className="text-3xl font-bold text-white text-center mb-8">
-            Why Choose Our Tools?
+            Why Choose PixUnlim?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center space-y-4">
@@ -293,8 +294,8 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-white">No Limits</h3>
               <p className="text-gray-300">
-                Process unlimited files with no size restrictions. Your browser
-                is the only limit.
+                Process unlimited files with no size restrictions. PixUnlim
+                handles hundreds or thousands of images at once.
               </p>
             </div>
 
@@ -317,11 +318,13 @@ export default function Home() {
               <h3 className="text-xl font-semibold text-white">High Quality</h3>
               <p className="text-gray-300">
                 Professional-grade algorithms ensure the best possible results
-                for your images.
+                for your images with PixUnlim's advanced processing.
               </p>
             </div>
           </div>
         </div>
+
+        
       </div>
     </div>
   );

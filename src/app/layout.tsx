@@ -15,32 +15,32 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Image Tools Suite - Unlimited Image Processing",
+  title: "PixUnlim - Unlimited Image Processing Tools",
   description: "Professional image processing tools with unlimited image count support. Convert, compress, resize, and crop unlimited images for free. No limits on file quantity.",
-  keywords: "image converter, image compression, image resizer, image cropper, unlimited images, free image tools, WebP converter, AVIF converter, PNG converter, image processing",
-  authors: [{ name: "Image Tools Suite" }],
-  creator: "Image Tools Suite",
-  publisher: "Image Tools Suite",
+  keywords: "pixunlim, image converter, image compression, image resizer, image cropper, unlimited images, free image tools, WebP converter, AVIF converter, PNG converter, image processing",
+  authors: [{ name: "PixUnlim" }],
+  creator: "PixUnlim",
+  publisher: "PixUnlim",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://your-domain.com'),
+  metadataBase: new URL('https://pixunlim.com'),
   alternates: {
-    canonical: '/',
+    canonical: 'https://pixunlim.com',
   },
   openGraph: {
-    title: "Image Tools Suite - Unlimited Image Processing",
+    title: "PixUnlim - Unlimited Image Processing Tools",
     description: "Professional image processing tools with unlimited image count support. Convert, compress, resize, and crop unlimited images for free. No limits on file quantity.",
-    url: 'https://your-domain.com',
-    siteName: 'Image Tools Suite',
+    url: 'https://pixunlim.com',
+    siteName: 'PixUnlim',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Image Tools Suite - Unlimited Image Processing',
+        alt: 'PixUnlim - Unlimited Image Processing Tools',
       },
     ],
     locale: 'en_US',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Image Tools Suite - Unlimited Image Processing",
+    title: "PixUnlim - Unlimited Image Processing Tools",
     description: "Professional image processing tools with unlimited image count support. Convert, compress, resize, and crop unlimited images for free. No limits on file quantity.",
     images: ['/og-image.jpg'],
   },
@@ -83,8 +83,8 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="Image Tools Suite" />
-        <meta name="application-name" content="Image Tools Suite" />
+        <meta name="apple-mobile-web-app-title" content="PixUnlim" />
+        <meta name="application-name" content="PixUnlim" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
         <link rel="icon" href="/favicon.ico" />

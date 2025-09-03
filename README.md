@@ -1,18 +1,20 @@
-# WebP Image Converter
+# PixUnlim - Unlimited Image Processing Tools
 
-Web application for bulk conversion of images from PNG and JPG formats to optimized WebP format.
+Professional image processing suite with unlimited image count support. Convert, compress, resize, and crop unlimited images for free at pixunlim.com.
 
 ## Features
 
-- 🖼️ **Format Support**: PNG, JPG, JPEG
-- ⚡ **Bulk Processing**: Up to 500 files simultaneously
-- 📦 **ZIP Archives**: Ability to download all files as a single ZIP archive
-- 🎛️ **Quality Settings**: Adjust WebP quality from 1% to 100%
-- 📊 **Compression Statistics**: Shows file size before and after conversion for each file
-- 🖱️ **Drag & Drop**: Convenient file upload by dragging and dropping
+- 🖼️ **Multiple Format Support**: PNG, JPG, JPEG, WebP, GIF, AVIF
+- ⚡ **Unlimited Processing**: Process hundreds or thousands of images at once
+- 📦 **ZIP Archives**: Download all processed files as a single ZIP archive
+- 🎛️ **Quality Settings**: Adjust compression quality from 1% to 100%
+- 📊 **Detailed Statistics**: File size comparisons and compression ratios
+- 🖱️ **Drag & Drop**: Convenient file upload interface
 - 📥 **Auto Download**: Converted files are automatically downloaded
-- 🎨 **Modern UI**: Beautiful and convenient interface with Tailwind CSS
-- 🔄 **Download Modes**: Individual files or ZIP archive
+- 🎨 **Modern UI**: Beautiful and responsive interface with Tailwind CSS
+- 🔄 **Multiple Tools**: Convert, Compress, Resize, Crop images
+- 🚀 **Fast Processing**: Optimized Sharp.js backend for speed
+- 🔒 **100% Private**: All processing happens on the server, no data stored
 
 ## Technologies
 
@@ -26,8 +28,8 @@ Web application for bulk conversion of images from PNG and JPG formats to optimi
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd webp-image-converter
+git clone https://github.com/SerhiiAndruschenko/image-tools-suite.git
+cd image-tools-suite
 ```
 
 2. Install dependencies:
@@ -149,4 +151,4 @@ MIT License
 
 ## Author
 
-Created for image optimization and improving website performance.
+Created by PixUnlim.com for professional image optimization and unlimited processing capabilities.

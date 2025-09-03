@@ -1,14 +1,14 @@
 {
-  "name": "WebP Image Converter",
-  "short_name": "WebP Converter",
-  "description": "Конвертуйте велику кількість PNG та JPG зображень у оптимізований WebP формат з неймовірною швидкістю та якістю",
+  "name": "PixUnlim - Unlimited Image Processing Tools",
+  "short_name": "PixUnlim",
+  "description": "Professional image processing suite with unlimited image count support. Convert, compress, resize, and crop unlimited images for free.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f8fafc",
+  "background_color": "#111827",
   "theme_color": "#3b82f6",
   "orientation": "portrait-primary",
   "scope": "/",
-  "lang": "uk",
+  "lang": "en",
   "categories": ["productivity", "utilities", "photo"],
   "icons": [
     {
@@ -38,10 +38,22 @@
   ],
   "shortcuts": [
     {
-      "name": "Конвертувати зображення",
-      "short_name": "Конвертувати",
-      "description": "Швидко конвертувати зображення у WebP",
-      "url": "/",
+      "name": "Convert Images",
+      "short_name": "Convert",
+      "description": "Quickly convert images to WebP format",
+      "url": "/converter",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "AVIF Converter",
+      "short_name": "AVIF",
+      "description": "Convert images to modern AVIF format",
+      "url": "/avif-converter",
       "icons": [
         {
           "src": "/icon-192.png",
@@ -56,14 +68,14 @@
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Головний екран WebP Image Converter"
+      "label": "PixUnlim Main Dashboard - Unlimited Image Processing Tools"
     },
     {
       "src": "/screenshot-narrow.png",
       "sizes": "750x1334",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Мобільний вигляд WebP Image Converter"
+      "label": "PixUnlim Mobile View - Image Processing on the Go"
     }
   ]
 }

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ImageConverter from '../../components/ImageConverter';
 
 export const metadata: Metadata = {
-  title: "WebP Converter - Unlimited Image Conversion | Image Tools Suite",
+  title: "WebP Converter - Unlimited Image Conversion | PixUnlim",
   description: "Convert unlimited images to WebP format for free. No limits on file count - process hundreds or thousands of images at once. Professional WebP conversion with unlimited batch processing.",
   keywords: "WebP converter, unlimited images, batch conversion, free WebP converter, image format converter, unlimited file count, WebP conversion tool",
   openGraph: {

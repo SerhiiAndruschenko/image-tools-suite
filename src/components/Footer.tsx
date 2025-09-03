@@ -13,7 +13,7 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-white">Image Tools Suite</h3>
+              <h3 className="text-xl font-bold text-white">PixUnlim</h3>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Professional image processing tools with unlimited image count support. 
@@ -73,10 +73,14 @@ export default function Footer() {
         {/* Bottom section */}
         <div className="mt-8 pt-8 border-t border-gray-800/50">
           <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0">
-            <div className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Image Tools Suite. All rights reserved.
+            <div className="text-center space-y-2">
+              <div className="text-gray-400 text-sm">
+                © {new Date().getFullYear()} PixUnlim.com. All rights reserved.
+              </div>
+              <div className="text-xs text-gray-500">
+                Unlimited Image Processing • No File Size Limits • 100% Private
+              </div>
             </div>
-            
           </div>
         </div>
       </div>
