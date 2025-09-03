@@ -77,9 +77,6 @@ export default function Footer() {
               <div className="text-gray-400 text-sm">
                 © {new Date().getFullYear()} PixUnlim.com. All rights reserved.
               </div>
-              <div className="text-xs text-gray-500">
-                Unlimited Image Processing • No File Size Limits • 100% Private
-              </div>
             </div>
           </div>
         </div>
