@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
       .toBuffer();
 
     // Return the PNG file
-    return new NextResponse(new Blob([pngBuffer], { type: 'image/png' }), {
+    return new NextResponse(new Uint8Array(pngBuffer), {
       headers: {
         'Content-Type': 'image/png',
         'Content-Disposition': `attachment; filename="${imageFile.name.replace(/\.[^/.]+$/, '')}.png"`,

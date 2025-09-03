@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Return the compressed file
-    return new NextResponse(new Blob([compressedBuffer], { type: fileType }), {
+    return new NextResponse(new Uint8Array(compressedBuffer), {
       headers: {
         'Content-Type': fileType,
         'Content-Disposition': `attachment; filename="${imageFile.name}"`,

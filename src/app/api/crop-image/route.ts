@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
       .toBuffer();
 
     // Return the cropped file
-    return new NextResponse(new Blob([croppedBuffer], { type: 'image/png' }), {
+    return new NextResponse(new Uint8Array(croppedBuffer), {
       headers: {
         'Content-Type': 'image/png',
         'Content-Disposition': `attachment; filename="${imageFile.name.replace(/\.[^/.]+$/, '')}_cropped.png"`,
