@@ -622,7 +622,7 @@ export default function AvifConverter() {
                         />
                       </svg>
                     </div>
-                    <div>
+                    <div className="overflow-hidden max-w-[125px] md:max-w-none">
                       <p className="font-medium text-white truncate max-w-xs">
                         {file.name}
                       </p>

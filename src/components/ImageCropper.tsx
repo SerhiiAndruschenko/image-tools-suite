@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import JSZip from 'jszip';
 import Link from 'next/link';
 import ReactCrop, { type Crop, PixelCrop, centerCrop, makeAspectCrop } from 'react-image-crop';
@@ -34,6 +34,8 @@ export default function ImageCropper() {
   const [crop, setCrop] = useState<Crop>();
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
+  const [aspectRatio, setAspectRatio] = useState<number | undefined>(16/9);
+  const [isAspectRatioEnabled, setIsAspectRatioEnabled] = useState(true);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -72,6 +74,40 @@ export default function ImageCropper() {
     // Don't create initial crop - let user draw their own
     setCrop(undefined);
   };
+
+  const createInitialCrop = () => {
+    if (!imageDimensions.width || !imageDimensions.height) return;
+    
+    if (isAspectRatioEnabled && aspectRatio) {
+      // Create crop with aspect ratio
+      const crop = centerCrop(
+        makeAspectCrop(
+          {
+            unit: '%',
+            width: 80,
+          },
+          aspectRatio,
+          imageDimensions.width,
+          imageDimensions.height
+        ),
+        imageDimensions.width,
+        imageDimensions.height
+      );
+      setCrop(crop);
+    }
+  };
+
+  const handleCustomAspectRatio = () => {
+    setIsAspectRatioEnabled(false);
+    setCrop(undefined);
+  };
+
+  // Auto-create crop when aspect ratio settings change
+  useEffect(() => {
+    if (isAspectRatioEnabled && aspectRatio && imageDimensions.width && imageDimensions.height) {
+      createInitialCrop();
+    }
+  }, [isAspectRatioEnabled, aspectRatio, imageDimensions.width, imageDimensions.height]);
 
   const cropImage = async (file: File): Promise<{
     blob: Blob;
@@ -303,6 +339,8 @@ export default function ImageCropper() {
     setImagePreview(null);
     setImageDimensions({ width: 0, height: 0 });
     setCrop(undefined);
+    setAspectRatio(16/9);
+    setIsAspectRatioEnabled(true);
   };
 
   return (
@@ -401,7 +439,7 @@ export default function ImageCropper() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                     </div>
-                    <div>
+                    <div className='overflow-hidden max-w-[125px] md:max-w-none'>
                       <p className="text-white font-medium">{file.name}</p>
                       <p className="text-gray-400 text-sm">
                         {(file.size / 1024 / 1024).toFixed(2)} MB
@@ -419,6 +457,142 @@ export default function ImageCropper() {
           </div>
         )}
 
+        {/* Aspect Ratio Settings */}
+        {selectedFiles.length > 0 && imagePreview && (
+          <div className="bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-gray-700/20">
+                         <div className="text-center mb-6">
+               <h3 className="text-xl font-bold text-white mb-2">
+                 Aspect Ratio Selection
+               </h3>
+               <p className="text-gray-300">
+                 Choose aspect ratio for consistent proportions or enable free-form cropping
+               </p>
+             </div>
+            
+                         <div className="grid grid-cols-1 md:grid-cols-1 gap-6 mb-6">
+               {/* Aspect Ratio Selection */}
+               <div className="bg-gray-700/50 rounded-2xl p-6">
+                 <label className="block text-lg font-semibold text-white mb-4">Aspect Ratio</label>
+                 <div className="grid grid-cols-2 gap-3">
+                   <button
+                     onClick={() => {
+                       setIsAspectRatioEnabled(true);
+                       setAspectRatio(16/9);
+                       setCrop(undefined);
+                     }}
+                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                       isAspectRatioEnabled && aspectRatio === 16/9
+                         ? 'bg-violet-600 text-white' 
+                         : 'bg-gray-600 text-gray-300 hover:bg-gray-500'
+                     }`}
+                   >
+                     16:9 (Landscape)
+                   </button>
+                   <button
+                     onClick={() => {
+                       setIsAspectRatioEnabled(true);
+                       setAspectRatio(4/3);
+                       setCrop(undefined);
+                     }}
+                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                       isAspectRatioEnabled && aspectRatio === 4/3
+                         ? 'bg-violet-600 text-white' 
+                         : 'bg-gray-600 text-gray-300 hover:bg-gray-500'
+                     }`}
+                   >
+                     4:3 (Standard)
+                   </button>
+                   <button
+                     onClick={() => {
+                       setIsAspectRatioEnabled(true);
+                       setAspectRatio(1/1);
+                       setCrop(undefined);
+                     }}
+                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                       isAspectRatioEnabled && aspectRatio === 1/1
+                         ? 'bg-violet-600 text-white' 
+                         : 'bg-gray-600 text-gray-300 hover:bg-gray-500'
+                     }`}
+                   >
+                     1:1 (Square)
+                   </button>
+                   <button
+                     onClick={() => {
+                       setIsAspectRatioEnabled(true);
+                       setAspectRatio(3/4);
+                       setCrop(undefined);
+                     }}
+                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                       isAspectRatioEnabled && aspectRatio === 3/4
+                         ? 'bg-violet-600 text-white' 
+                         : 'bg-gray-600 text-gray-300 hover:bg-gray-500'
+                     }`}
+                   >
+                     3:4 (Portrait)
+                   </button>
+                   <button
+                     onClick={() => {
+                       setIsAspectRatioEnabled(true);
+                       setAspectRatio(9/16);
+                       setCrop(undefined);
+                     }}
+                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                       isAspectRatioEnabled && aspectRatio === 9/16
+                         ? 'bg-violet-600 text-white' 
+                         : 'bg-gray-600 text-gray-300 hover:bg-gray-500'
+                     }`}
+                   >
+                     9:16 (Mobile)
+                   </button>
+                   <button
+                     onClick={() => {
+                       setIsAspectRatioEnabled(true);
+                       setAspectRatio(2/3);
+                       setCrop(undefined);
+                     }}
+                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                       isAspectRatioEnabled && aspectRatio === 2/3
+                         ? 'bg-violet-600 text-white' 
+                         : 'bg-gray-600 text-gray-300 hover:bg-gray-500'
+                     }`}
+                   >
+                     2:3 (Classic)
+                   </button>
+                 </div>
+                 
+                 {/* Custom Aspect Ratio */}
+                 <div className="mt-4">
+                   <button
+                     onClick={handleCustomAspectRatio}
+                     className={`w-full px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                       !isAspectRatioEnabled
+                         ? 'bg-violet-600 text-white' 
+                         : 'bg-gray-600 text-gray-300 hover:bg-gray-500'
+                     }`}
+                   >
+                     {!isAspectRatioEnabled ? 'Currently Active - Free-form Cropping' : 'Custom - Free-form Cropping'}
+                   </button>
+                   <p className="text-xs text-gray-400 text-center mt-2">
+                     Allows you to draw crop area in any shape and size without aspect ratio restrictions
+                   </p>
+                 </div>
+               </div>
+              
+              {/* Create Initial Crop Button */}
+              {isAspectRatioEnabled && aspectRatio && !crop && (
+                <div className="text-center mt-4">
+                  <button
+                    onClick={createInitialCrop}
+                    className="px-6 py-3 bg-violet-600 hover:bg-violet-700 text-white font-medium rounded-xl transition-colors duration-200 shadow-lg"
+                  >
+                    Create Initial Crop Area
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* Image Preview and Crop Area */}
         {selectedFiles.length > 0 && imagePreview && (
           <div className="bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-gray-700/20">
@@ -427,7 +601,10 @@ export default function ImageCropper() {
                 Crop Area Selection
               </h3>
               <p className="text-gray-300">
-                Click and drag to create a crop area, or use the resize handles to adjust size. Free-form cropping allows any shape and size!
+                {isAspectRatioEnabled && aspectRatio 
+                  ? `Crop area locked to ${aspectRatio === 16/9 ? '16:9' : aspectRatio === 4/3 ? '4:3' : aspectRatio === 1/1 ? '1:1' : aspectRatio === 3/4 ? '3:4' : aspectRatio === 9/16 ? '9:16' : '2:3'} ratio`
+                  : 'Free-form cropping enabled! Click and drag to create crop area in any shape and size, or use resize handles to adjust.'
+                }
               </p>
             </div>
             
@@ -441,6 +618,8 @@ export default function ImageCropper() {
                   minHeight={50}
                   keepSelection
                   ruleOfThirds
+                  aspect={isAspectRatioEnabled ? aspectRatio : undefined}
+                  locked={isAspectRatioEnabled}
                 >
                   <img
                     src={imagePreview}
@@ -453,7 +632,7 @@ export default function ImageCropper() {
             </div>
             
             {crop && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-center text-gray-300">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center text-gray-300">
                 <div className="bg-gray-700/50 rounded-2xl p-4">
                   <h4 className="font-semibold text-violet-400 mb-2">Crop Area</h4>
                   <p className="text-lg">
@@ -472,6 +651,18 @@ export default function ImageCropper() {
                     }
                   </p>
                 </div>
+                {isAspectRatioEnabled && aspectRatio && (
+                  <div className="bg-gray-700/50 rounded-2xl p-4">
+                    <h4 className="font-semibold text-violet-400 mb-2">Aspect Ratio</h4>
+                    <p className="text-lg">
+                      {aspectRatio === 16/9 ? '16:9' : 
+                       aspectRatio === 4/3 ? '4:3' : 
+                       aspectRatio === 1/1 ? '1:1' : 
+                       aspectRatio === 3/4 ? '3:4' : 
+                       aspectRatio === 9/16 ? '9:16' : '2:3'}
+                    </p>
+                  </div>
+                )}
               </div>
             )}
             

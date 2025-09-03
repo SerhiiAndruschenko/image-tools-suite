@@ -1,24 +1,28 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "PixUnlim - Unlimited Image Processing Tools | Free & No Limits",
-  description: "Professional image processing suite with unlimited image count support. Convert, compress, resize, and crop unlimited images for free. No limits on file quantity - process hundreds or thousands of images at once.",
-  keywords: "pixunlim, image tools, unlimited images, free image processing, WebP converter, AVIF converter, image resizer, image cropper, image compressor, PNG converter, batch processing, unlimited file count, no limits",
+  description:
+    "Professional image processing suite with unlimited image count support. Convert, compress, resize, and crop unlimited images for free. No limits on file quantity - process hundreds or thousands of images at once.",
+  keywords:
+    "pixunlim, image tools, unlimited images, free image processing, WebP converter, AVIF converter, image resizer, image cropper, image compressor, PNG converter, batch processing, unlimited file count, no limits",
   openGraph: {
     title: "PixUnlim - Unlimited Image Processing Tools",
-    description: "Professional image processing suite with unlimited image count support. Convert, compress, resize, and crop unlimited images for free.",
-    url: 'https://pixunlim.com',
-    type: 'website',
-    siteName: 'PixUnlim',
+    description:
+      "Professional image processing suite with unlimited image count support. Convert, compress, resize, and crop unlimited images for free.",
+    url: "https://pixunlim.com",
+    type: "website",
+    siteName: "PixUnlim",
   },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     title: "PixUnlim - Unlimited Image Processing Tools",
-    description: "Professional image processing suite with unlimited image count support. No limits on file quantity.",
+    description:
+      "Professional image processing suite with unlimited image count support. No limits on file quantity.",
   },
   alternates: {
-    canonical: 'https://pixunlim.com',
+    canonical: "https://pixunlim.com",
   },
 };
 
@@ -131,7 +135,7 @@ export default function Home() {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+            d="M12 4v16M4 12h16M4 12l4-4m-4 4l4 4m12-4l-4-4m4 4l-4 4"
           />
         </svg>
       ),
@@ -323,8 +327,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        
       </div>
     </div>
   );
