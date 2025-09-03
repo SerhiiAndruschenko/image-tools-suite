@@ -199,7 +199,7 @@ export default function Home() {
           {services.map((service, index) => (
             <Link key={index} href={service.href} className="group">
               <div
-                className={`relative h-full p-8 rounded-3xl border-2 border-gray-700/50 bg-gray-800/80 backdrop-blur-sm transition-all duration-500 transform hover:scale-105 hover:shadow-2xl group-hover:border-gray-500/50`}
+                className={`relative h-full p-8 rounded-3xl border-2 border-gray-700/50 bg-gray-800/80 backdrop-blur-sm transition-all  duration-500 transform hover:scale-105 hover:shadow-2xl group-hover:border-gray-500/50`}
               >
                 {/* Background glow effect */}
                 <div

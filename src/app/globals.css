@@ -96,9 +96,7 @@ footer a:hover {
 }
 
 /* Smooth page transitions */
-* {
-  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
-}
+
 
 /* Custom scrollbar for footer links */
 footer .space-y-2 a {
