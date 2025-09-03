@@ -19,24 +19,40 @@ export async function POST(request: NextRequest) {
     const fileType = imageFile.type;
 
     if (fileType === 'image/jpeg' || fileType === 'image/jpg') {
-      // Compress JPEG with quality setting
+      // Optimized JPEG compression
       compressedBuffer = await sharp(imageBuffer)
-        .jpeg({ quality: quality })
+        .jpeg({ 
+          quality: quality,
+          progressive: false, // Disable progressive for faster processing
+          mozjpeg: true // Use mozjpeg for better compression
+        })
         .toBuffer();
     } else if (fileType === 'image/png') {
-      // Compress PNG with optimization
+      // Optimized PNG compression
       compressedBuffer = await sharp(imageBuffer)
-        .png({ compressionLevel: 9, quality: quality })
+        .png({ 
+          compressionLevel: 6, // Reduced from 9 to 6
+          quality: quality,
+          progressive: false,
+          palette: true
+        })
         .toBuffer();
     } else if (fileType === 'image/webp') {
-      // Compress WebP with quality setting
+      // Optimized WebP compression
       compressedBuffer = await sharp(imageBuffer)
-        .webp({ quality: quality })
+        .webp({ 
+          quality: quality,
+          effort: 2, // Reduced effort for faster processing
+          nearLossless: false
+        })
         .toBuffer();
     } else {
-      // For other formats, just optimize without quality change
+      // For other formats, convert to optimized PNG
       compressedBuffer = await sharp(imageBuffer)
-        .png({ compressionLevel: 9 })
+        .png({ 
+          compressionLevel: 6,
+          palette: true
+        })
         .toBuffer();
     }
 

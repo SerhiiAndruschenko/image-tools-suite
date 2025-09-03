@@ -14,12 +14,12 @@ export async function POST(request: NextRequest) {
     // Convert File to Buffer
     const imageBuffer = Buffer.from(await imageFile.arrayBuffer());
 
-    // Process image with Sharp - convert to AVIF with specified quality
+    // Optimized AVIF settings for faster conversion
     const avifBuffer = await sharp(imageBuffer)
       .avif({
         quality: quality,
-        effort: 9, // Maximum effort for best compression
-        chromaSubsampling: '4:2:0', // Best compression
+        effort: 2, // Reduced from 9 to 2 for much faster conversion
+        chromaSubsampling: '4:2:0', // Keep for compression
         lossless: false
       })
       .toBuffer();

@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     // Convert File to Buffer
     const imageBuffer = Buffer.from(await imageFile.arrayBuffer());
 
-    // Process image with Sharp - crop the image
+    // Optimized cropping with Sharp
     const croppedBuffer = await sharp(imageBuffer)
       .extract({
         left: cropX,
@@ -29,7 +29,10 @@ export async function POST(request: NextRequest) {
         width: cropWidth,
         height: cropHeight
       })
-      .png({ compressionLevel: 9 }) // Optimize the cropped image
+      .png({ 
+        compressionLevel: 6, // Reduced from 9 to 6 for faster processing
+        palette: true // Enable palette for better compression
+      })
       .toBuffer();
 
     // Return the cropped file
