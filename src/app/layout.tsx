@@ -85,6 +85,11 @@ export default function RootLayout({
     <html lang="en">
       <GoogleAnalytics gaId="G-73PKSSTYT8" />
       <head>
+        <script 
+          async 
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6358243501215789"
+          crossOrigin="anonymous"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
         <meta name="msapplication-TileColor" content="#000000" />
